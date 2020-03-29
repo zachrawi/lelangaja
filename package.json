@@ -11,7 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "node-localstorage": "^2.1.5",
+    "uuid": "^7.0.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
