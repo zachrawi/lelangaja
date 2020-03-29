@@ -13,7 +13,13 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 mx-auto border shadow-sm p-3 mt-2">
-                <form action="">
+                <div id="message-success" class="alert alert-success d-none">
+                    <p class="message">Registrasi berhasil, silahkan login di <a href="index.html">sini</a></p>
+                </div>
+                <div id="message-error" class="alert alert-danger d-none">
+                    <p class="message"></p>
+                </div>
+                <form action="" id="form-login">
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email" class="form-control">

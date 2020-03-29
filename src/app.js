@@ -55,6 +55,61 @@ app.post('/register', (req, res) => {
     }
 });
 
+app.post('/login', (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+
+    if (!email || email.trim().length === 0) {
+        res.send({
+            status: 'error',
+            message: 'Email mesti diisi'
+        });
+    } else if (!password || password.trim().length === 0) {
+        res.send({
+            status: 'error',
+            message: 'Password mesti diisi'
+        });
+    } else {
+        const user = dbUser.login(email, password);
+
+        if (!user) {
+            res.send({
+                status: 'error',
+                message: 'Email dan atau password yang anda masukan salah'
+            });
+        } else {
+            res.setHeader('Set-Cookie', `id=${user.id}`);
+            res.send({
+                status: 'success'
+            });
+        }
+    }
+});
+
+app.get('/check-login', (req, res) => {
+    if (req.headers.cookie && req.headers.cookie.trim().length > 0) {
+        const id = req.headers.cookie.split('=')[1];
+
+        let user = dbUser.getUser(id);
+
+        if (user) {
+            // jangan mengikutsertakan password
+            delete user.password;
+
+            res.send({
+                status: 'success',
+                user: user,
+            });
+
+            return;
+        }
+    }
+
+    res.send({
+        status: 'error',
+    });
+});
+
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

@@ -40,3 +40,15 @@ exports.doesEmailExists = (email) => {
 
     return users.findIndex(user => user.email === email) >= 0;
 };
+
+exports.login = (email, password) => {
+    let users = getUsers();
+
+    return users.find(user => user.email === email && user.password === password);
+};
+
+exports.getUser = (id) => {
+    let users = getUsers();
+
+    return users.find(user => user.id === id);
+};
