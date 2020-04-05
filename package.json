@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.0.2",
     "express": "^4.17.1",
     "node-localstorage": "^2.1.5",
     "pg": "^8.0.0",

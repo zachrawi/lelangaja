@@ -1,4 +1,4 @@
-fetch('/users')
+fetch('/api/users')
     .then(response => response.json())
     .then(data => {
         if (data.status === 'success') {
