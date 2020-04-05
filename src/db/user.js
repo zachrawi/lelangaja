@@ -1,11 +1,12 @@
 const uuid = require('uuid/v4');
 const { Client } = require('pg');
 
-const connectionString = 'postgresql://postgres:jakarta123@localhost:5432/lelangaja'
+const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:jakarta123@localhost:5432/lelangaja'
 ;
 
 const client = new Client({
     connectionString: connectionString,
+    ssl: process.env.DATABASE_URL ? true : false,
 });
 
 client.connect();
