@@ -3,10 +3,9 @@ const { Client } = require('pg');
 
 const connectionString = process.env.DATABASE_URL || 'postgresql://postgres:jakarta123@localhost:5432/lelangaja'
 ;
-console.log('env ---', process.env.DATABASE_URL);
+
 const client = new Client({
     connectionString: connectionString,
-    ssl: false,
 });
 
 client.connect();
